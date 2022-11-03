@@ -1,0 +1,15 @@
+[package]
+name = "{{project-name}}"
+version = "0.1.0"
+edition = "2021"
+description = "cargo, make me a project"
+authors = ["Yoofie <yoofie@gmail.com>"]
+include = ["src/**/*", "LICENSE-*", "*.md"]
+readme = "README.md"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = { version = "1.0.142", features = ["derive"] }
+serde_json = "1.0.83"
+clap = "*"
+once_cell = "*"
