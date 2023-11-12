@@ -2,7 +2,7 @@
 name = "{{project-name}}"
 version = "0.1.0"
 edition = "2021"
-description = "cargo, make me a project"
+description = "{{description}}"
 authors = ["Yoofie <yoofie@gmail.com>"]
 include = ["src/**/*", "LICENSE-*", "*.md"]
 readme = "README.md"
@@ -13,3 +13,17 @@ serde = { version = "1.0.142", features = ["derive"] }
 serde_json = "1.0.83"
 clap = "*"
 once_cell = "*"
+flume = "*"
+nanoid = "0.4.0"
+
+[build-dependencies]
+cbindgen = "*"
+
+[profile.release]
+strip = true
+panic = "abort"
+lto = true
+
+#[lib]
+#crate-type = ["staticlib", "cdylib"]
+
