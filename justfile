@@ -34,3 +34,6 @@ stats:
 	@tokei .\src --files > bin\code_stats.txt
 	@tokei .\src --files
 	@Write-host "Code stats data generated: 'target\code_stats.txt'" -f Green
+
+default:
+	@just --list --unsorted
