@@ -25,11 +25,7 @@ run:
 
 # Export the project
 export:
-	@. .\support\commands.ps1; exportAll {{APP_NAME}}
-
-# Build the project
-exportsrc: 
-	@. .\support\commands.ps1; exportAll {{APP_NAME}}
+	@. .\support\commands.ps1; exportAll {{project-name}}
 
 # Calculate stats about your code
 stats:
