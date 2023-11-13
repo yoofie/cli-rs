@@ -35,5 +35,13 @@ stats:
 	@tokei .\src --files
 	@Write-host "Code stats data generated: 'target\code_stats.txt'" -f Green
 
+# Vendor the dependencies into the 'vendor' folder
+vendor:
+	@cargo vendor  --no-delete --versioned-dirs --frozen -v vendor
+
+# Generate Documentation
+docs:
+	@cargo doc --open
+
 default:
 	@just --list --unsorted
