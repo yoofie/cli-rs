@@ -10,7 +10,7 @@ fn main() {
 	let c_config =
 		cbindgen::Config::from_file("cbindgen.toml").expect("Unable to find cbindgen.toml configuration file");
 	let cpp_config =
-		cbindgen::Config::from_file("cbindgen.toml").expect("Unable to find cppbindgen.toml configuration file");
+		cbindgen::Config::from_file("cppbindgen.toml").expect("Unable to find cppbindgen.toml configuration file");
 
 	cbindgen::generate_with_config(&crate_dir, c_config)
 		.unwrap()
