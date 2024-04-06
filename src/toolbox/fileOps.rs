@@ -1,6 +1,6 @@
 /* **************************************
-	File Name: {{project-name}}
-	Created: Wednesday November 02 2022
+	File Name: File Operations
+	Created: Saturday April 06 2024
 *************************************** */
 #![allow(non_snake_case)]
 #![allow(dead_code)]
@@ -9,33 +9,30 @@
 #![allow(non_camel_case_types)]
 
 /* ********************************************************
-Imports
+	Imports
 ******************************************************** */
-use appCfg::{appSettings, startCmdLine};
-use once_cell::sync::OnceCell;
 
-pub mod appCfg;
-pub mod toolbox;
 /* ********************************************************
 	Enums & Structures
 ******************************************************** */
-static GLOBALCFG: OnceCell<appSettings> = OnceCell::new();
+
+use std::{
+	fs::{self, File},
+	io::Read,
+	path::PathBuf,
+};
 
 /* ********************************************************
 	Public APIs
 ******************************************************** */
-fn main() {
-	startCmdLine();
+// Read a file as binary
+pub fn get_file_as_byte_vec(filename: &PathBuf) -> Vec<u8> {
+	let mut f = File::open(&filename).expect("no file found");
+	let metadata = fs::metadata(&filename).expect("unable to read metadata");
+	let mut buffer = vec![0; metadata.len() as usize];
+	f.read(&mut buffer).expect("buffer overflow");
 
-	let args = &GLOBALCFG.get().unwrap().cmdLine;
-
-	match args.subcommand() {
-		Some(("test", matches)) => {
-			println!("Do something!");
-			// Do something
-		}
-		_ => unreachable!("clap should ensure we don't get here"),
-	};
+	buffer
 }
 
 /* ********************************************************

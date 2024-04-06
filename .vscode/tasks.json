@@ -2,16 +2,19 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "cargo",
-			"command": "build",
-			"problemMatcher": [
-				"$rustc"
-			],
+			"label": "Build",
+			"type": "shell",
+			"command": "just build",
 			"group": {
 				"kind": "build",
 				"isDefault": true
 			},
-			"label": "rust: cargo build"
-		}
+		},
+		{
+			"label": "Clean Project",
+			"type": "shell",
+			"command": "just clean",
+			"problemMatcher": [],
+		},
 	]
 }

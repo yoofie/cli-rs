@@ -8,7 +8,7 @@ set windows-shell := ["powershell.exe", "-NoLogo", "-Command"]
 
 ### SETTINGS #########################################################
 APP_NAME := "{{project-name}}"
-
+set ignore-comments := true
 ### COMMANDS #########################################################
 
 # Build the project
@@ -23,9 +23,25 @@ clean:
 run: 
 	@cargo run
 
+# Run all unit tests
+@test:
+	cargo test
+
+# Cargo Fix
+@fix:
+	cargo fix
+
+### EXPORT #########################################################
+
 # Export the project
 export:
 	@. .\support\commands.ps1; exportAll {{project-name}}
+
+# Export the project source files only
+export-src:
+	@. .\support\commands.ps1; exportCodeOnly dvc-file-conv
+
+### META #########################################################
 
 # Calculate stats about your code
 stats:
@@ -45,3 +61,9 @@ docs:
 
 default:
 	@just --list --unsorted
+
+### TEST #########################################################
+
+@compare_results:
+	@. .\support\commands.ps1; beyond_compare_files {{justfile_directory()}} 'test/app/GeminiDVC.hex' 'test/app/GeminiDVC_filled.hex'
+	@. .\support\commands.ps1; beyond_compare_files {{justfile_directory()}} 'test/app/GeminiDVC.hex' 'test/app/GeminiDVC_filled.hex'

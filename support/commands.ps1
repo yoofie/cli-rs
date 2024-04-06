@@ -15,6 +15,47 @@ function exportAll([string]$name) {
 
 }
 
+function exportCodeOnly([string]$name) {
+	$theDate = Get-Date -Format "MM.dd.yyyy - hh.mm.ss tt"
+	$export_name = "[" + $theDate + "] $name.zip"
+	$archiveList = ".\src", ".\support", ".\.vscode", ".\test", ".\.gitignore", ".\justfile", ".\readme.md", ".cargo", "Cargo.toml", "cbindgen.toml", "cppbindgen.toml", "rustfmt.toml", "build.rs"
+	$all_files_present = 1;
+	$missingItem = 'None';
+
+	# Ensure neccessary files/folders are present
+	ForEach ($item in $archiveList) {
+		
+		If (!(Test-Path $item)) {
+			Write-host "'$item'" -f Yellow -NoNewline
+			Write-host " is missing!" -f Red
+			$missingItem = $item
+			$all_files_present = false
+		}
+	}
+	If($all_files_present) {
+		$compress = @{
+			Path             = $archiveList
+			CompressionLevel = "Fastest"
+			DestinationPath  = $export_name
+		}
+		Compress-Archive @compress -Force
+		Write-host "Succesfully exported '$export_name'" -f Green
+	} else {
+		Write-host "Failed to export, '$missingItem' is missing!" -f Red
+	}
+	
+	
+	# https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/compress-archive?view=powershell-7.3
+}
+
+function beyond_compare_files([string]$current_path, [string]$input1, [string]$input2){
+	$env:Path += ';C:\Program Files\Beyond Compare 4\'
+	#Write-host $env:Path
+	$cmd = "BCompare.exe `"$current_path\$input1`" `"$current_path\$input2`"";
+
+	Invoke-Expression "& $cmd"
+}
+
 function windowsTerminal() {
 	#@%LOCALAPPDATA%\Microsoft\WindowsApps\wt.exe -d %cd%
 	Write-host "Launched windows terminal" -f Green	
