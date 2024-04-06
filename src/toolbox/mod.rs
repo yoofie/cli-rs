@@ -8,10 +8,13 @@
 #![allow(unused_parens)]
 #![allow(non_camel_case_types)]
 
+use byteorder::{BigEndian, LittleEndian, ReadBytesExt};
+use serde::Serialize;
+
 /* ********************************************************
 	Imports
 ******************************************************** */
-pub mod display;
+
 /* ********************************************************
 	Enums & Structures
 ******************************************************** */
@@ -126,7 +129,6 @@ pub fn u32_to_array(x: u32) -> [u8; 4] {
 ******************************************************** */
 #[cfg(test)]
 mod tests {
-	use crate::supportUtils::replaceSlice_u16;
 
 	use super::*;
 
@@ -195,16 +197,6 @@ mod tests {
 	}
 
 	#[test]
-	fn test_read_slice_to_be_u32() {
-		//let data: [u8; 4] = [1, 2, 3, 4];
-		let buf: &mut [u8] = &mut [0xaa, 0xbb, 0xcc, 0xdd];
-
-		let rslt = slice_to_u32_be(&buf[..], 0);
-		println!("{:X}", rslt);
-		assert_eq!(rslt, 0xaabbccdd);
-	}
-
-	#[test]
 	fn test_u32_to_array() {
 		//let data: [u8; 4] = [1, 2, 3, 4];
 		//let buf: &mut [u8] = &mut [0xaa, 0xbb, 0xcc, 0xdd];
@@ -212,15 +204,5 @@ mod tests {
 		let rslt = u32_to_array(0xaabbccdd);
 		//println!("{:X}", rslt);
 		assert_eq!(&rslt, &[0xaa, 0xbb, 0xcc, 0xdd]);
-	}
-	#[test]
-	fn test_u32_to_ti_format() {
-		//let data: [u8; 4] = [1, 2, 3, 4];
-		//let buf: &mut [u8] = &mut [0xaa, 0xbb, 0xcc, 0xdd];
-
-		let rslt = u32_to_array(0xaabbccdd);
-		let val = slice_to_u32_be(&rslt, 0);
-		//println!("{:X}", rslt);
-		assert_eq!(val, 0xaabbccdd);
 	}
 }

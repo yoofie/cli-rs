@@ -14,8 +14,9 @@ Imports
 use appCfg::{appSettings, startCmdLine};
 use once_cell::sync::OnceCell;
 use std::path::PathBuf;
-pub mod Toolbox;
+mod Toolbox;
 pub mod appCfg;
+pub mod toolbox;
 /* ********************************************************
 	Enums & Structures
 ******************************************************** */
@@ -27,10 +28,15 @@ static GLOBALCFG: OnceCell<appSettings> = OnceCell::new();
 fn main() {
 	startCmdLine();
 
-	let aappVersion = &GLOBALCFG.get().unwrap().cmdLine;
-	let input = aappVersion.get_one::<PathBuf>("input").unwrap();
+	let args = &GLOBALCFG.get().unwrap().cmdLine;
 
-	println!("--> {}", input.to_string_lossy());
+	match args.subcommand() {
+		Some(("test", matches)) => {
+			println!("Do something!");
+			// Do something
+		}
+		_ => unreachable!("clap should ensure we don't get here"),
+	};
 }
 
 /* ********************************************************

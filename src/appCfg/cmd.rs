@@ -29,31 +29,29 @@ static APP_NAME: &str = "CLI APP";
 ******************************************************** */
 
 pub fn startCmdLine() {
-	let cmd_line = Command::new(APP_NAME)
+	let cmd_line = clap::Command::new(APP_NAME)
 		.version("0.1")
 		.author("Yoofie <yoofie@gmail.com>")
-		.about("CLI App v0.1 
-		
-This project exists to do something.")
-		.arg(arg!(-i --input <INPUT_FILE> "The input file into this tool. This file should have been generated from the ddbug tool").value_parser(value_parser!(PathBuf)).default_value("output.json"))
-		.arg(arg!(-d --rdbg "Prints out the internal Rust structures").value_parser(value_parser!(bool)).default_value("true"))
-		.get_matches();
-	/* ********************************************************
-		Get the data
-	******************************************************** */
-	let input_file = cmd_line.get_one::<PathBuf>("input");
-	let rdbg = cmd_line.get_one::<bool>("rdbg");
+		.about(
+			r#"################### CLI APP #####################
+For use with various projects
 
-	/* ********************************************************
-		Welcome Message
-	******************************************************** */
-	if input_file.is_some() && rdbg.is_some() {
-		println!(
-			"Hello!\nUsing \"{}\" as input. DBG setting is \"{}\"\n",
-			input_file.unwrap().to_string_lossy(),
-			rdbg.unwrap()
-		);
-	}
+
+################### ############################ #####################"#,
+		)
+		.subcommand_required(true)
+		.subcommand(
+			Command::new("test")
+				.alias("test0")
+				.about("Dummy description")
+				.arg(arg!(<input> "Required input *.hex file to use").value_parser(value_parser!(PathBuf)))
+				.arg(
+					arg!(<output> "Required output <FILENAME> that this tool will generate")
+						.value_parser(value_parser!(PathBuf)),
+				),
+		)
+		.get_matches();
+
 	/* ********************************************************
 		app Settings
 	******************************************************** */
