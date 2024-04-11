@@ -48,6 +48,14 @@ For use with various projects
 				.arg(
 					arg!(<output> "Required output <FILENAME> that this tool will generate")
 						.value_parser(value_parser!(PathBuf)),
+				)
+				.arg(
+					Arg::new("debug")
+						.long("debug")
+						.short('d')
+						.action(ArgAction::SetTrue)
+						.required(false)
+						.help("Display debug messages"),
 				),
 		)
 		.get_matches();
