@@ -36,6 +36,8 @@ fn main() {
 		}
 		_ => unreachable!("clap should ensure we don't get here"),
 	};
+
+	println!("TODAY: {}", chrono::offset::Utc::now());
 }
 
 /* ********************************************************
