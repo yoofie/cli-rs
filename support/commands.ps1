@@ -110,6 +110,36 @@ function printSomething() {
 
 }
 
+function checkFolder([string]$folderPath){
+	If (!(Test-Path ".\$folderPath")) {
+		mkdir $folderPath
+	} 
+}
+
+function testJson([string] $inputJson, [string] $input1) {
+	$myJson = Get-Content $inputJson -Raw | ConvertFrom-Json
+	$date = Get-Date | Select-Object -Property * | ConvertTo-Json
+	Write-Host $date -f Cyan
+	$vv = $myJson.version
+	$vv2 = $myJson.configurations[1].name
+	Write-Host "Version = $vv"
+	Write-Host "$vv2"
+	Write-Host "Version = $myJson.version"
+	$myJson.version | Out-File -FilePath .\$binFolder\www.txt
+
+}
+
+function git_info([string] $inputJson) {
+	$myJson = git rev-parse --short HEAD
+	$tag = git describe --tags --always
+	$branch = git branch --show-current
+	$ssize = et -l 1 -ssize-rev .
+	Write-Host "$myJson"
+	Write-Host "$tag"
+	Write-Host "$branch"
+	Write-Host "$ssize"
+}
+
 # Reference material
 # https://stackoverflow.com/questions/1405750/calling-a-specific-powershell-function-from-the-command-line
 # https://stackoverflow.com/questions/12850487/invoke-a-second-script-with-arguments-from-a-script
