@@ -35,6 +35,9 @@ pub fn get_file_as_byte_vec(filename: &PathBuf) -> Vec<u8> {
 	buffer
 }
 
+// if let Err(e) = fs::write("help.html", help.as_bytes()) {
+// 	println!("asdfsd");
+// }
 /* ********************************************************
 	Private APIs
 ******************************************************** */

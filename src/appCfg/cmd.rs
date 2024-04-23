@@ -13,7 +13,7 @@
 ******************************************************** */
 use super::appSettings;
 use crate::GLOBALCFG;
-use clap::{arg, value_parser, Command};
+use clap::{arg, value_parser, Arg, ArgAction, Command};
 use std::path::PathBuf;
 
 /* ********************************************************
@@ -57,6 +57,11 @@ For use with various projects
 						.required(false)
 						.help("Display debug messages"),
 				),
+		)
+		.subcommand(
+			Command::new("docs")
+				.alias("dox")
+				.about("Generate & display help documentation"),
 		)
 		.get_matches();
 

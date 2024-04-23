@@ -1,0 +1,294 @@
+<html>
+
+<head>
+	<title>Help Docs</title>
+	<style type="text/css">
+		@import "https://rsms.me/inter/inter.css";
+
+		p,
+		ol,
+		li,
+		ul li,
+		blockquote,
+		dl,
+		dd,
+		table,
+		td,
+		tr,
+		ol li {
+			font-family: 'Inter', Verdana, 'Times New Roman', Times, serif;
+			font-size: 13.5px;
+			line-height: 23px;
+			letter-spacing: -0.35px;
+		}
+
+		@supports (font-variation-settings: normal) {
+			:root {
+				font-family: 'Inter var', sans-serif;
+			}
+		}
+
+		th,
+		table.data.zebra tr:nth-child(2n) td,
+		table.data.zebra tr:nth-child(2n+1) td {
+			background-color: #000;
+			border-bottom: 1px solid #333
+		}
+
+		th {
+			text-align: left;
+			background-color: #333
+		}
+
+		hr {
+			height: 1px;
+			border: none;
+			padding: 0px;
+			text-align: center;
+			float: center;
+			border-top: 2px dotted #555;
+			margin: 2px 0px
+		}
+
+		body {
+			background: #fff;
+			color: #000;
+
+		}
+
+		h1 {
+			font-size: 2em;
+			letter-spacing: -1px;
+			font-weight: 700
+		}
+
+		table {
+			width: 100%;
+			margin: 0px 0px 20px 0px
+		}
+
+		tr,
+		td,
+		th {
+			padding: 5px;
+			margin: 0px
+		}
+
+		tr:hover {
+			background: rgba(92, 100, 91, 0.5);
+		}
+
+		tr:nth-child(even) {
+			background: rgba(56, 56, 56, 0.1)
+		}
+
+		tr a,
+		td a,
+		th a {
+			text-decoration: none;
+		}
+
+		dt {
+			font-weight: 700;
+		}
+
+		dt a {
+			text-decoration: none;
+		}
+
+		dt a:hover {
+			text-decoration: underline;
+		}
+
+		.content img {
+			display: block;
+			/* width: 100%; */
+			height: auto;
+			margin-left: 50%;
+			/* margin-top: 5%; */
+			transform: translateX(-50%);
+		}
+
+		dd {
+			margin: 0px 0px 30px 15px;
+		}
+
+		dd span {
+			color: #333;
+			font-size: 13px;
+		}
+
+		dd span a:link {
+			color: #6e6e6e;
+			text-decoration: none;
+		}
+
+		dd span a.tag {
+			color: #967479;
+		}
+
+		pre {
+			padding: 10px 20px;
+			line-height: 20px;
+			overflow: auto;
+			background: #f1e5cf;
+		}
+
+		p pre,
+		li pre {
+			color: rgb(255, 251, 247)
+		}
+
+		blockquote {
+			background: rgba(92, 100, 91, 0.2);
+			margin: 0px;
+			padding: 10px 20px;
+		}
+
+		body {
+			font-family: 'Inter', sans-serif;
+			padding: 0px;
+			margin: 0px;
+		}
+
+		h1 {
+			font-size: 2.2em;
+			line-height: 1em;
+			padding: 0px 0px 0px 0px;
+			margin: 30px 0px 0px 0px;
+			border-bottom: 2px solid #6e6e6e;
+
+		}
+
+		h1 a {
+			text-decoration: none;
+			transition: 0.4s background-size cubic-bezier(0, 0, 0, 1);
+		}
+
+		h1 a:hover {
+			text-decoration: none;
+			color: #bcdf83;
+			transition: 0.4s background-size cubic-bezier(0, 0, 0, 1);
+		}
+
+
+		h2 a {
+			text-decoration: none;
+			color: #ebe3b5;
+			transition: 0.4s background-size cubic-bezier(0, 0, 0, 1);
+		}
+
+		h2 a:hover {
+			text-decoration: none;
+			color: #bcdf83;
+			transition: 0.4s background-size cubic-bezier(0, 0, 0, 1);
+		}
+
+		h2 {
+			font-size: 1.3em;
+			line-height: 1em;
+			padding: 0px 0px 0px 0px;
+			margin: 30px 0px 0px 0px;
+			border-bottom: 0px solid #6e6e6e;
+			color: #d8d4bd;
+
+		}
+
+		/* LISTS */
+		ul {
+			padding: 0px;
+			margin: 10px 0px 10px 25px;
+			font-size: 14px
+		}
+
+		ul li:before {
+			content: "+";
+			padding-right: 5px;
+			list-style-type: none;
+			list-style: none
+		}
+
+		ul li {
+			padding: 0px;
+			margin: 0;
+			list-style-type: none;
+			list-style: none;
+			font-size: 14px
+		}
+
+		ul li a {
+			font-size: 14px;
+			margin: 0px;
+			text-decoration: none;
+			color: salmon
+		}
+
+		ul li a:hover {
+			margin: 0px;
+			text-decoration: underline;
+			color: orange
+		}
+
+		ul li a:visited {
+			margin: 0px;
+			text-decoration: none;
+			color: #ffc185;
+		}
+
+		ul li ul {
+			margin-top: 0px;
+			margin-bottom: 5px;
+		}
+
+		details {
+			border-top: 0px dotted #999;
+			border-bottom: 0px dotted #999;
+			padding: 20px 20px;
+			font-size: 13.5px;
+		}
+
+		details summary {
+			font-weight: 600;
+			margin-left: -15px;
+			font-size: 1.2em;
+		}
+
+		details p {
+			margin: 0px;
+			padding: 5px 0px 5px 0px;
+		}
+
+		details ul {
+			margin: 0px 0px 0px 15px;
+		}
+
+		details details summary {
+			color: #ffcaf6;
+		}
+
+		.container {
+			padding: 10px;
+			margin: 0px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+
+		<h1>{{project_name}}</h1>
+		<p>This is a help doc.</p>
+		<pre>This is some code</pre>
+
+		<h1>Usage</h1>
+		<p>Building:</p>
+		<pre>just build</pre>
+
+		<details>
+			<summary>Details</summary>
+			Something small enough to escape casual notice.
+		</details>
+	</div>
+</body>
+
+</html>

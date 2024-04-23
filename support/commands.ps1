@@ -140,6 +140,71 @@ function git_info([string] $inputJson) {
 	Write-Host "$ssize"
 }
 
+function generate_version_info([string] $app_name, [string] $v_major, [string] $v_minor, [string] $v_patch, [string] $v_revision){
+	$git_commit = git rev-parse --short HEAD
+	$git_branch = git branch --show-current
+	$git_tag = git describe --tags --always
+
+	$domain = $Env:UserDomain
+	$user = $Env:UserName
+
+	$full_date = Get-Date -UFormat "%A %m/%d/%Y %R %Z"
+	$pretty_date = Get-Date
+	$date_year = Get-Date -UFormat "%Y"
+	$date_month = Get-Date -UFormat "%m"
+	$date_day = Get-Date -UFormat "%d"
+	$date_hour = Get-Date -UFormat "%H"
+	$date_minute = Get-Date -UFormat "%M"
+	$date_sec = Get-Date -UFormat "%S"
+	
+	$pc_name = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
+	$template = @"
+/* **************************************
+File Name: Generated version Info
+File Generated: $pretty_date
+*************************************** */
+#ifndef _VERSION_INFO_H_
+#define _VERSION_INFO_H_
+
+/* **************************************
+	#defines
+*************************************** */
+#define APP_NAME "$app_name"
+
+/* SW Version */
+#define RELEASE_VERSION "$v_major.$v_minor.$v_patch.$v_revision"
+#define MAJOR_VERSION $v_major
+#define MINOR_VERSION $v_minor
+#define PATCH_VERSION $v_patch
+#define REVISION_VERSION $v_revision
+
+/* Git Tags */
+#define GIT_BUILD_VERSION $git_commit
+#define GIT_BUILD_VERSION_TAG "$git_tag"
+#define GIT_BUILD_BRANCH_NAME "$git_branch"
+
+/* Info about the person who generated this SW*/
+#define BUILDER_USER_DOMAIN "$domain"
+#define BUILDER_USER_COMPUTER_NAME "$pc_name"
+#define C_USER "$user"
+
+/* Timestamps */
+#define PROJ_GENERATED_TIMESTAMP "$full_date"
+#define PROJ_GENERATED_PRETTY_TIMESTAMP "$pretty_date"
+
+#define BUILDTIME_YEAR $date_year
+#define BUILDTIME_MONTH $date_month
+#define BUILDTIME_DAY $date_day
+#define BUILDTIME_HOUR $date_hour
+#define BUILDTIME_MINUTE $date_minute
+#define BUILDTIME_SECOND $date_sec
+
+#endif
+"@
+
+	$template | Out-File "./src/versionInfo.h"
+}
+
 # Reference material
 # https://stackoverflow.com/questions/1405750/calling-a-specific-powershell-function-from-the-command-line
 # https://stackoverflow.com/questions/12850487/invoke-a-second-script-with-arguments-from-a-script
