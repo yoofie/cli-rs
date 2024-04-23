@@ -101,6 +101,10 @@ function Add-Path($Path) {
 	[Environment]::SetEnvironmentVariable( "Path", $Path, "Machine" )
 }
 
+function print_path() {
+	($env:path).split(';')
+}
+
 # From ./support folder, run following pecific function like so:
 # powershell -command "& { . .\addPath.ps1; printSomething }"
 function printSomething() {
