@@ -12,10 +12,12 @@
 Imports
 ******************************************************** */
 use appCfg::{appSettings, startCmdLine};
+use commands::test::cmd_test;
 use once_cell::sync::OnceCell;
 use std::{fs, process::Command};
 
 pub mod appCfg;
+pub mod commands;
 pub mod toolbox;
 /* ********************************************************
 	Enums & Structures
@@ -33,9 +35,11 @@ fn main() {
 	match args.subcommand() {
 		Some(("test", matches)) => {
 			println!("Do something!");
-			// Do something
+			if let Err(msg) = cmd_test(&matches) {
+				println!("{}", msg);
+			}
 		}
-		Some(("docs", matches)) => {
+		Some(("docs", _matches)) => {
 			let help = include_str!("./appCfg/help.html");
 			if let Err(e) = fs::write("help.html", help.as_bytes()) {
 				println!("ERROR  |{e}");

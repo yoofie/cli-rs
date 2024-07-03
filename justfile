@@ -35,11 +35,11 @@ run:
 
 # Export the project
 export:
-	@. .\support\commands.ps1; exportAll {{project-name}}
+	@. .\support\commands.ps1; exportAll {{APP_NAME}}
 
 # Export the project source files only
 export-src:
-	@. .\support\commands.ps1; exportCodeOnly variable::get("project-name")
+	@. .\support\commands.ps1; exportCodeOnly variable::get("APP_NAME")
 
 ### META #########################################################
 
