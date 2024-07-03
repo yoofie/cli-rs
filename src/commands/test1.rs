@@ -63,7 +63,7 @@ pub fn cmd_test(args: &ArgMatches) -> Result<String, String> {
 
 	let prettyJson = formatJson(&log_json);
 
-	let json_file_name = PathBuf::from(format!("{}.json", outputFile.parent().unwrap().to_string_lossy()));
+	let json_file_name = PathBuf::from(format!("{}.json", outputFile.file_stem().unwrap().to_string_lossy()));
 
 	/* Write the user-firendly JSON file
 		******************************************************** */
