@@ -31,6 +31,10 @@ run:
 @fix:
 	cargo fix
 
+# Help command
+@help:
+	@. .\target\debug\{{APP_NAME}} --help
+
 ### EXPORT #########################################################
 
 # Export the project
