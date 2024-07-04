@@ -41,12 +41,17 @@ pub fn display_array_subset(input: &[u8]) {
 	}
 }
 
+/// Display a slice
 pub fn display_array(input: &[u8]) {
 	println!("\n\nLEN = {} ", input.len());
 	for (idx, item) in input.iter().enumerate() {
+		if idx % 4 == 0 {
+			print!(" ");
+		}
 		if idx % 16 == 0 {
 			println!("");
 		}
-		print!("{:2X} ", item);
+		print!("{:02X} ", item);
 	}
+	println!("");
 }
