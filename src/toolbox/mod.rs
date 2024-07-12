@@ -126,6 +126,34 @@ pub fn u32_to_array(x: u32) -> [u8; 4] {
 }
 
 /* ********************************************************
+	Struct to array
+******************************************************** */
+/*
+/// Convert struct into array
+impl From<[u8; 0x40]> for partitionHeader_v1 {
+	fn from(bytes: [u8; 0x40]) -> Self {
+		unsafe { std::mem::transmute(bytes) }
+	}
+}
+
+/// Convert struct into array?
+impl From<partitionHeader_v1> for [u8; 0x40] {
+	fn from(h: partitionHeader_v1) -> Self {
+		unsafe { std::mem::transmute(h) }
+	}
+}
+
+pub fn to_array(input: &[u8]) -> [u8; 0x40] {
+	input.try_into().expect("slice with incorrect length")
+}
+
+pub fn construct_from_u8_slice(input: &[u8]) -> partitionHeader_v1 {
+	let slice = partitionHeader_v1::to_array(&input[..64]);
+	let retval = unsafe { transmute::<[u8; 0x40], partitionHeader_v1>(slice) };
+	retval
+}
+*/
+/* ********************************************************
 	TESTS
 ******************************************************** */
 #[cfg(test)]

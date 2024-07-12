@@ -35,6 +35,33 @@ pub fn get_file_as_byte_vec(filename: &PathBuf) -> Vec<u8> {
 	buffer
 }
 
+/// Take a string and generate a file
+pub fn stringToFile(inputString: &String, outputFile: &PathBuf) {
+	match fs::File::create(outputFile) {
+		Ok(mut file) => {
+			if let Err(ee) = file.write_all(&inputString.clone().into_bytes()) {
+				println!("FAILED TO WRITE TO FILE | {ee}");
+			}
+		}
+		Err(ee) => {
+			println!("{ee} | CREATE FILE | Failed to create file");
+		}
+	}
+}
+
+/// Given a file path, read the file line by line and return a Vector
+fn read_input_file(filename: &Path) -> Vec<String> {
+	let mut result = Vec::with_capacity(5000);
+
+	for line in read_to_string(filename)
+		.expect("ERROR #1 | Provided file does not exist!")
+		.lines()
+	{
+		result.push(line.to_string())
+	}
+
+	result
+}
 // if let Err(e) = fs::write("help.html", help.as_bytes()) {
 // 	println!("asdfsd");
 // }
