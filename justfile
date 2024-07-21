@@ -11,9 +11,13 @@ APP_NAME := "{{project-name}}"
 set ignore-comments := true
 ### COMMANDS #########################################################
 
-# Build the project
+# Build the project (debug)
 build: 
 	@cargo build
+
+# Build the project (release)
+buildr: 
+	@cargo build --release
 
 # Clean the project
 clean: 
