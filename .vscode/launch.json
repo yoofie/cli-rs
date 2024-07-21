@@ -11,6 +11,14 @@
 			"program": "${workspaceFolder}/target/Debug/{{project-name}}.exe",
 			"args": [],
 			"cwd": "${workspaceFolder}/target/Debug/"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "test0",
+			"program": "${workspaceFolder}/target/Debug/ffi-exe-engine.exe",
+			"args": ["test0"],
+			"cwd": "${workspaceFolder}/target/Debug/"
 		}
 	]
 }
