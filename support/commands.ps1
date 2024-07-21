@@ -18,7 +18,7 @@ function exportAll([string]$name) {
 function exportCodeOnly([string]$name) {
 	$theDate = Get-Date -Format "MM.dd.yyyy - hh.mm.ss tt"
 	$export_name = "[" + $theDate + "] $name.zip"
-	$archiveList = ".\src", ".\support", ".\.vscode", ".\test", ".\.gitignore", ".\justfile", ".\readme.md", ".cargo", "Cargo.toml", "cbindgen.toml", "cppbindgen.toml", "rustfmt.toml", "build.rs"
+	$archiveList = ".\src", ".\support", ".\.vscode", ".\.gitignore", ".\justfile", ".\readme.md", ".cargo", "Cargo.toml", ".\support\cbindgen.toml", ".\support\cppbindgen.toml", "rustfmt.toml", "build.rs"
 	$all_files_present = 1;
 	$missingItem = 'None';
 
