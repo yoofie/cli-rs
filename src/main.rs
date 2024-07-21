@@ -18,6 +18,7 @@ use std::{fs, process::Command};
 
 pub mod appCfg;
 pub mod commands;
+pub mod ffiToolbox;
 pub mod toolbox;
 /* ********************************************************
 	Enums & Structures
