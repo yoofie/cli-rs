@@ -12,7 +12,7 @@
 Imports
 ******************************************************** */
 use appCfg::{appSettings, startCmdLine};
-use commands::test::{cmd_test, cmd_test2, cmd_test3};
+use commands::{test::cmd_test, test2::cmd_test2, test3::cmd_test3};
 use once_cell::sync::OnceCell;
 use std::{fs, process::Command};
 
