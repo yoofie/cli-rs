@@ -16,8 +16,24 @@
 			"type": "lldb",
 			"request": "launch",
 			"name": "test0",
-			"program": "${workspaceFolder}/target/Debug/ffi-exe-engine.exe",
+			"program": "${workspaceFolder}/target/Debug/{{project-name}}.exe",
 			"args": ["test0"],
+			"cwd": "${workspaceFolder}/target/Debug/"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "TEST 2",
+			"program": "${workspaceFolder}/target/Debug/{{project-name}}.exe",
+			"args": ["test2"],
+			"cwd": "${workspaceFolder}/target/Debug/"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "TEST 3",
+			"program": "${workspaceFolder}/target/Debug/{{project-name}}.exe",
+			"args": ["test3"],
 			"cwd": "${workspaceFolder}/target/Debug/"
 		}
 	]

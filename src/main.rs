@@ -12,7 +12,7 @@
 Imports
 ******************************************************** */
 use appCfg::{appSettings, startCmdLine};
-use commands::test::cmd_test;
+use commands::test::{cmd_test, cmd_test2, cmd_test3};
 use once_cell::sync::OnceCell;
 use std::{fs, process::Command};
 
@@ -37,6 +37,18 @@ fn main() {
 		Some(("test", matches)) => {
 			println!("Do something!");
 			if let Err(msg) = cmd_test(&matches) {
+				println!("{}", msg);
+			}
+		}
+		Some(("test2", matches)) => {
+			println!("Do something!");
+			if let Err(msg) = cmd_test2(&matches) {
+				println!("{}", msg);
+			}
+		}
+		Some(("test3", matches)) => {
+			println!("Do something!");
+			if let Err(msg) = cmd_test3(&matches) {
 				println!("{}", msg);
 			}
 		}
