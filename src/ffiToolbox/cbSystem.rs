@@ -96,9 +96,15 @@ where
 		}
 	}
 
-	pub fn execute_callback_with_data(&self, ffi: ffiString, op: T) -> Result<(), String> {
+	pub fn execute_callback_with_data(&self, msg: &mut String, op: T) -> Result<(), String> {
 		match self.db.get(&op) {
 			Some(Some(callbackData)) => {
+				let ffi = ffiString {
+					data_type: ffiDataType::UTF8_STRING,
+					ptr: msg.as_mut_ptr(),
+					length: msg.len(),
+					capacity: msg.capacity(),
+				};
 				if unsafe { !(callbackData.userCallback)(ffi, callbackData.userDataPayload.clone()) } {
 					println!("FFI Call {} returned failure!", op);
 				};
@@ -110,14 +116,14 @@ where
 	}
 
 	/// Register a uaer defined callback
-	pub fn register_callback(&mut self, op: T, cb: callbackDatax) -> Result<(), String> {
+	pub fn register_callback(&mut self, swModule: &str, op: T, cb: callbackDatax) -> Result<(), String> {
 		match self.db.insert(op.clone(), Some(cb)) {
 			Some(_old) => {
 				println!("Replacing older callback function");
 				Ok(())
 			}
 			None => {
-				println!("Callback function for {} successfully registered", op);
+				println!("{} | Callback function for {} successfully registered", swModule, op);
 				Ok(())
 			}
 		}
