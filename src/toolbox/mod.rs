@@ -10,8 +10,10 @@
 
 use byteorder::{BigEndian, LittleEndian, ReadBytesExt};
 use serde::Serialize;
+pub mod DebugJson;
 pub mod display;
 pub mod fileOps;
+
 /* ********************************************************
 	Imports
 ******************************************************** */
