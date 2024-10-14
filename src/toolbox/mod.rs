@@ -10,7 +10,7 @@
 
 use byteorder::{BigEndian, LittleEndian, ReadBytesExt};
 use serde::Serialize;
-pub mod DebugJson;
+pub mod debugJson;
 pub mod display;
 pub mod fileOps;
 
