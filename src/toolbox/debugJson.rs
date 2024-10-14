@@ -47,7 +47,7 @@ pub trait DebugJSON {
 		retval
 	}
 
-	fn conv_json_to_pretty_string(input: serde_json::Value) -> String {
+	fn conv_json_to_pretty_string(&self, input: serde_json::Value) -> String {
 		formatJson(&input)
 	}
 }
