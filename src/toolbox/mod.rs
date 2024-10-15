@@ -30,7 +30,7 @@ pub mod fileOps;
 	Private APIs
 ******************************************************** */
 
-fn to_array<const N: usize>(s: &str) -> [char; N] {
+pub fn to_array<const N: usize>(s: &str) -> [char; N] {
 	let mut chars = s.chars();
 	[(); N].map(|_| chars.next().unwrap())
 }
@@ -43,6 +43,15 @@ pub fn formatJson(input: &serde_json::Value) -> String {
 	let jsonString = String::from_utf8(buf).expect("Failed to create JSON string");
 	//println!("{}", String::from_utf8(buf).unwrap());
 	jsonString
+}
+
+/// Convert 0xA0000000 to 0xA0000000 u32
+/// Also accepts 0xA000_0000 as input
+pub fn convert_str_to_u32(input: &str) -> Result<u32, String> {
+	match u32::from_str_radix(&input.trim_start_matches("0x").replace('_', ""), 16) {
+		Ok(converted) => Ok(converted),
+		Err(ee) => Err(format!("ERROR | {ee} | Failed to convert {}", input)),
+	}
 }
 
 /* ********************************************************
