@@ -35,6 +35,14 @@ run:
 @fix:
 	cargo fix
 
+# Run spellcheck # https://github.com/crate-ci/typos
+@spellcheck:
+	typos
+
+# Fix spelling
+@fix_spellcheck:
+	typos -w
+
 # Help command
 @help:
 	@. .\target\debug\{{APP_NAME}} --help
@@ -69,6 +77,11 @@ docs:
 
 default:
 	@just --list --unsorted
+
+# Install some cargo utilities
+install_utils:
+	cargo install tokei
+	cargo install typos-cli
 
 ### TEST #########################################################
 
