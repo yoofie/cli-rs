@@ -63,7 +63,7 @@ export-src:
 stats:
 	@Write-host "Code stats for ./src" -f Blue
 	@. .\support\commands.ps1; stats
-	@tokei .\src --files > bin\code_stats.txt
+	@tokei .\src --files > target\code_stats.txt
 	@tokei .\src --files
 	@Write-host "Code stats data generated: 'target\code_stats.txt'" -f Green
 

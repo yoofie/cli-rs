@@ -81,7 +81,7 @@ function runDev() {
 }
 
 function stats() {
-	If (Test-Path '.\bin') {
+	If (Test-Path '.\target') {
 		
 	}
  else {
