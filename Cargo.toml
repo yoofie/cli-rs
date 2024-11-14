@@ -6,6 +6,7 @@ description = "{{description}}"
 authors = ["Yoofie <yoofie@gmail.com>"]
 include = ["src/**/*", "LICENSE-*", "*.md"]
 readme = "README.md"
+build = "build.rs"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
@@ -17,6 +18,7 @@ flume = "*"
 nanoid = "0.4.0"
 itertools = "0.12.1"
 chrono = "0.4.34"
+shadow-rs = "0.35.2" # https://crates.io/crates/shadow-rs
 static-toml = "1.0.1" # https://github.com/cptpiepmatz/static-toml
 include_dir = "0.7.3" # https://github.com/Michael-F-Bryan/include_dir
 faster-hex = "0.9.0" # https://github.com/nervosnetwork/faster-hex
@@ -26,6 +28,7 @@ rand = "0.8.5"
 
 [build-dependencies]
 cbindgen = "*"
+shadow-rs = "0.35.2"
 
 [profile.release]
 strip = true

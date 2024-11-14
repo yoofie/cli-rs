@@ -12,7 +12,7 @@
 Imports
 ******************************************************** */
 use appCfg::{appSettings, startCmdLine};
-use commands::{test::cmd_test, test2::cmd_test2, test3::cmd_test3};
+use commands::{info::appInfo, test::cmd_test, test2::cmd_test2, test3::cmd_test3};
 use once_cell::sync::OnceCell;
 use std::{fs, process::Command};
 
@@ -20,6 +20,7 @@ pub mod appCfg;
 pub mod commands;
 pub mod ffiToolbox;
 pub mod toolbox;
+
 /* ********************************************************
 	Enums & Structures
 ******************************************************** */
@@ -41,16 +42,19 @@ fn main() {
 			}
 		}
 		Some(("test2", matches)) => {
-			println!("Do something!");
+			println!("TEST 2 | Do something!");
 			if let Err(msg) = cmd_test2(&matches) {
 				println!("{}", msg);
 			}
 		}
 		Some(("test3", matches)) => {
-			println!("Do something!");
+			println!("TEST 3 | Do something!");
 			if let Err(msg) = cmd_test3(&matches) {
 				println!("{}", msg);
 			}
+		}
+		Some(("info", _matches)) => {
+			appInfo();
 		}
 		Some(("docs", _matches)) => {
 			let help = include_str!("./appCfg/help.html");
