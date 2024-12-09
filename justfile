@@ -47,6 +47,9 @@ run:
 @help:
 	@. .\target\debug\{{APP_NAME}} --help
 
+@native_libs:
+	cargo rustc -q -- --print=native-static-libs
+
 ### EXPORT #########################################################
 
 # Export the project
