@@ -58,7 +58,7 @@ export:
 
 # Export the project source files only
 export-src:
-	@. .\support\commands.ps1; exportCodeOnly variable::get("APP_NAME")
+	@. .\support\commands.ps1; exportCodeOnly {{APP_NAME}}
 
 ### META #########################################################
 
