@@ -8,6 +8,7 @@
 #![allow(unused_parens)]
 #![allow(non_camel_case_types)]
 #![allow(static_mut_refs)]
+#![allow(unexpected_cfgs)]
 
 /* ********************************************************
 Imports
