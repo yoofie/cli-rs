@@ -51,7 +51,7 @@ pub fn stringToFile(inputString: &String, outputFile: &PathBuf) {
 }
 
 /// Given a file path, read the file line by line and return a Vector
-fn read_input_file(filename: &Path) -> Vec<String> {
+pub fn read_input_file(filename: &Path) -> Vec<String> {
 	let mut result = Vec::with_capacity(5000);
 
 	for line in read_to_string(filename)

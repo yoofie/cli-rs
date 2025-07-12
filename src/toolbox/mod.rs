@@ -15,6 +15,7 @@ use serde::Serialize;
 pub mod debugJson;
 pub mod display;
 pub mod fileOps;
+pub mod git;
 
 /* ********************************************************
 	Imports
@@ -136,6 +137,17 @@ pub fn u32_to_array(x: u32) -> [u8; 4] {
 	let b3: u8 = ((x >> 8) & 0xff) as u8;
 	let b4: u8 = (x & 0xff) as u8;
 	return [b1, b2, b3, b4];
+}
+
+pub fn byteSwap_slice_u32(input: [u8; 4]) -> u32 {
+	let mut temp = input;
+	for chunk in temp.chunks_exact_mut(2) {
+		chunk.swap(0, 1);
+	}
+	u32::from_le_bytes(temp)
+}
+pub fn isPowerOfTwo(input_alignment: usize) -> bool {
+	(input_alignment != 0) && ((input_alignment & (input_alignment - 1)) == 0)
 }
 
 /* ********************************************************

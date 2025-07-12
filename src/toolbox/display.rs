@@ -56,6 +56,49 @@ pub fn display_array(input: &[u8]) {
 	println!("");
 }
 
+pub fn display_array_u32(input: &[u32]) {
+	print!("\nLEN = {} ", input.len());
+	for (idx, item) in input.iter().enumerate() {
+		if idx % 2 == 0 {
+			print!(" ");
+		}
+		if idx % 4 == 0 {
+			println!("");
+		}
+		print!("{:08X} ", item);
+	}
+	println!("");
+}
+
+pub fn display_array_as_u32_columns(input: &[u8]) {
+	print!("\nLEN = {} ", input.len());
+	for (idx, item) in input.iter().enumerate() {
+		if idx % 4 == 0 {
+			print!(" ");
+		}
+		if idx % 16 == 0 {
+			println!("");
+		}
+		print!("{:02X}", item);
+	}
+	println!("");
+}
+
+pub fn display_array_log(log: &mut String, input: &[u8]) {
+	log.push_str(format!("\nLEN = {} ", input.len()).as_str());
+	for (idx, item) in input.iter().enumerate() {
+		if idx % 4 == 0 {
+			log.push_str(" ");
+		}
+		if idx % 16 == 0 {
+			log.push_str("\n");
+		}
+
+		log.push_str(format!("{:02X} ", item).as_str());
+	}
+	log.push_str("\n");
+}
+
 pub fn display_array_inline(input: &[u8]) {
 	for (idx, item) in input.iter().enumerate() {
 		if idx % 4 == 0 {
