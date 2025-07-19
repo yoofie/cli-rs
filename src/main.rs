@@ -19,6 +19,8 @@ use commands::{info::appInfo, test::cmd_test, test2::cmd_test2, test3::cmd_test3
 use once_cell::sync::OnceCell;
 use std::{fs, process::Command};
 
+use crate::toolbox::display::{display_array_as_u32_columns, display_array_with_offsets_string};
+
 pub mod appCfg;
 pub mod commands;
 pub mod ffiToolbox;
@@ -81,3 +83,17 @@ fn main() {
 /* ********************************************************
 	Private APIs
 ******************************************************** */
+/* THREAD SCOPES
+thread::scope(|s| {
+	s.spawn(|| {
+		println!("hello from the first scoped thread");
+		// We can borrow `a` here.
+	});
+	s.spawn(|| {
+		println!("hello from the second scoped thread");
+		// We can even mutably borrow `x` here,
+		// because no other threads are using it.
+	});
+	println!("hello from the main thread");
+});
+ */

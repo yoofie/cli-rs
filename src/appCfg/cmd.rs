@@ -15,15 +15,17 @@
 use super::appSettings;
 use crate::GLOBALCFG;
 use clap::{arg, value_parser, Arg, ArgAction, Command};
+use semver::Version;
 use std::path::PathBuf;
-
+use std::str::FromStr;
 /* ********************************************************
 	Enums & Structures
 ******************************************************** */
 /* ********************************************************
 	Public APIs
 ******************************************************** */
-static APP_NAME: &str = "CLI APP";
+const APP_NAME: &str = env!("CARGO_PKG_NAME");
+const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 /* ********************************************************
 	Private APIs
@@ -89,7 +91,7 @@ For use with various projects
 	******************************************************** */
 	let app: appSettings = appSettings {
 		appName: APP_NAME.to_string(),
-		appVersion: 0.1,
+		appVersion: Version::from_str(VERSION).expect("ERROR: FAILED TO CONVERT VERSION CONST STRING TO SEMVER"),
 		cmdLine: cmd_line,
 	};
 
@@ -98,6 +100,6 @@ For use with various projects
 	/* ********************************************************
 		Some messages()
 	******************************************************** */
-	let appVersion = GLOBALCFG.get().unwrap().appVersion;
+	let appVersion = &GLOBALCFG.get().unwrap().appVersion;
 	println!("Hello, world! {} {}", GLOBALCFG.get().unwrap().appName, appVersion);
 }

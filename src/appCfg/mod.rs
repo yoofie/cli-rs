@@ -14,6 +14,7 @@
 ******************************************************** */
 use clap::ArgMatches;
 pub use cmd::startCmdLine;
+use semver::Version;
 pub mod cmd;
 /* ********************************************************
 	Enums & Structures
@@ -21,7 +22,7 @@ pub mod cmd;
 #[derive(Debug)]
 pub struct appSettings {
 	pub appName: String,
-	pub appVersion: f32,
+	pub appVersion: Version,
 	pub cmdLine: ArgMatches,
 }
 /* ********************************************************

@@ -16,7 +16,7 @@ pub mod debugJson;
 pub mod display;
 pub mod fileOps;
 pub mod git;
-
+pub mod loggr;
 /* ********************************************************
 	Imports
 ******************************************************** */

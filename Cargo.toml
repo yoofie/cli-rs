@@ -11,21 +11,50 @@ build = "build.rs"
 
 [dependencies]
 serde = { version = "1.0.142", features = ["derive"] }
-serde_json = "1.0.83"
-clap = "4.5.4"
+serde_json = "1" # https://crates.io/crates/serde_json
+serde_json_path = "0.7" # https://docs.rs/serde_json_path/latest/serde_json_path/
+clap = "4.5"
 once_cell = "*"
-flume = "*"
-nanoid = "0.4.0"
-itertools = "0.12.1"
-chrono = "0.4.34"
-static-toml = "1.0.1" # https://github.com/cptpiepmatz/static-toml
-include_dir = "0.7.3" # https://github.com/Michael-F-Bryan/include_dir
-faster-hex = "0.9.0" # https://github.com/nervosnetwork/faster-hex
-byteorder = "1.5.0"
-opener = "0.7.0"
-rand = "0.8.5"
-anyhow = "1.0.98"
+flume = "*" # https://crates.io/crates/flume
 
+itertools = "0.14" # https://crates.io/crates/itertools
+chrono = "0.4" # https://crates.io/crates/chrono
+#static-toml = "1.0.1" # https://github.com/cptpiepmatz/static-toml
+include_dir = "0.7.3" # https://github.com/Michael-F-Bryan/include_dir
+#faster-hex = "0.9.0" # https://github.com/nervosnetwork/faster-hex
+byteorder = "1.5.0" # https://crates.io/crates/byteorder
+opener = "0.7.0" # https://crates.io/crates/opener
+#rand = "0.8.5"
+anyhow = "1.0.98" # https://crates.io/crates/anyhow
+semver = "1.0.26" # https://crates.io/crates/semver
+strum = "0.27.1" # https://crates.io/crates/strum
+strum_macros = "0.27"
+
+# Tokio
+#tokio = { version = "1", features = ["full"] }
+#tokio-util = "0.7.12" # https://crates.io/crates/tokio-util
+#tokio-stream = "0.1.16" # https://docs.rs/tokio-stream/0.1.17/tokio_stream/index.html
+
+#blake3 = "1.8.2"
+#bytes = "1"
+#arrayvec =  { version = "0.7.6", features = ["serde"]}
+#reqwest = { version = "0.12", features = ["json", "stream"] }
+#s2n-quic = "1"
+
+# floating point
+# float-ord = "0.3.2" # https://crates.io/crates/float-ord
+# ord_subset = "*" # https://docs.rs/ord_subset/3.1.1/ord_subset/
+# decorum = "0.4" # https://docs.rs/decorum/latest/decorum/
+
+# ctrlc = "*" # https://crates.io/crates/ctrlc
+# byte-unit = "*" # https://lib.rs/crates/byte-unit
+# static_cell = "2.1.1" # https://crates.io/crates/static_cell
+
+# gens = { git = "https://github.com/Kyllingene/gens.git" } # https://github.com/Kyllingene/gens/tree/master
+# nanoid = "0.4.0"
+
+json-five = "*" # https://github.com/spyoungtech/json-five-rs
+numfmt = "1" # https://docs.rs/numfmt/latest/numfmt/
 [build-dependencies]
 cbindgen = "*"
 

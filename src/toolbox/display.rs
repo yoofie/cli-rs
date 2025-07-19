@@ -25,6 +25,32 @@
 	Private APIs
 ******************************************************** */
 
+use itertools::Itertools;
+
+pub fn display_array_with_offsets_string(start_Addr: usize, input: &[u8]) -> String {
+	let mut retval = String::with_capacity(input.len());
+	let mut row_addr = start_Addr;
+	let mut rowCounter = 0;
+
+	//retval.push_str(&format!("\n\n\n{:#<width$}", "DISPLAY BUFFER ", width = 100));
+	retval.push_str(&format!("\nSTART ADDR: 0x{:05X} | ", start_Addr));
+	retval.push_str(&format!("\tLEN = {}\n", input.len()));
+
+	for row in &input.iter().chunks(16) {
+		retval.push_str(&format!("{:>8} | {:>8X} | ", rowCounter, row_addr));
+		for (idx, item) in row.enumerate() {
+			if idx % 4 == 0 {
+				retval.push_str(" ");
+			}
+			retval.push_str(&format!("{:02X} ", item));
+		}
+		retval.push('\n');
+		row_addr += 0x10;
+		rowCounter += 1;
+	}
+	retval
+}
+
 pub fn display_array_subset(input: &[u8]) {
 	if input.len() > 25 {
 		for item in input[..25].iter() {
