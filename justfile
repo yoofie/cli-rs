@@ -45,7 +45,7 @@ APP_NAME := "{{project-name}}"
 
 # Help command
 @help:
-	. .\target\debug\{{APP_NAME}} --help
+	. .\target\debug\{{project-name}} --help
 
 # Generate Documentation
 @docs:
@@ -64,11 +64,11 @@ APP_NAME := "{{project-name}}"
 
 # Export the project
 @export:
-	. .\support\commands.ps1; exportAll {{APP_NAME}}
+	. .\support\commands.ps1; exportAll {{project-name}}
 
 # Export the project source files only
 @export-src:
-	. .\support\commands.ps1; exportCodeOnly {{APP_NAME}}
+	. .\support\commands.ps1; exportCodeOnly {{project-name}}
 
 ### CODE UTILS #######################################################################
 
@@ -108,8 +108,8 @@ install_utils:
 ### TEST #########################################################
 
 @compare_results:
-	. .\support\commands.ps1; beyond_compare_files {{justfile_directory()}} 'test/app/GeminiDVC.hex' 'test/app/GeminiDVC_filled.hex'
-	. .\support\commands.ps1; beyond_compare_files {{justfile_directory()}} 'test/app/GeminiDVC.hex' 'test/app/GeminiDVC_filled.hex'
+	. .\support\commands.ps1; beyond_compare_files justfile_directory() 'target/debug/{{project-name}}.exe' 'target/debug/{{project-name}}.exe'
+	. .\support\commands.ps1; beyond_compare_files justfile_directory() 'target/debug/{{project-name}}.exe' 'target/debug/{{project-name}}.exe'
 
 ### ALIASES #########################################################################
 
