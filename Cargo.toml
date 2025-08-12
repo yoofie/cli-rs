@@ -52,6 +52,7 @@ strum_macros = "0.27"
 
 # gens = { git = "https://github.com/Kyllingene/gens.git" } # https://github.com/Kyllingene/gens/tree/master
 # nanoid = "0.4.0"
+# walkdir = "2" # https://crates.io/crates/walkdir
 
 json-five = "*" # https://github.com/spyoungtech/json-five-rs
 numfmt = "1" # https://docs.rs/numfmt/latest/numfmt/
